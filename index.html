@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YouTube Live View Tracker</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="Logo" class="logo" />
-    <h2>YouTube Live View Tracker</h2>
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <img src="logo.PNG" alt="Live View Tracker Logo" class="logo">
+    </div>
 
-    <label for="videoId">Video ID</label>
-    <input type="text" id="videoId" placeholder="e.g. uRkwOqBvwV4" value="uRkwOqBvwV4">
+    <h1>YouTube Live View Tracker</h1>
 
-    <label for="targetViews">Target Views</label>
-    <input type="number" id="targetViews" value="3110000">
+    <div class="input-section">
+      <label for="videoId">Video ID:</label>
+      <input type="text" id="videoId" placeholder="Enter YouTube Video ID">
 
-    <label for="targetTime">Target Time (minutes from now)</label>
-    <input type="number" id="targetTime" value="20">
+      <label for="targetViews">Target Views:</label>
+      <input type="number" id="targetViews" placeholder="Enter Target Views">
 
-    <button onclick="startTracking()">Start Tracking</button>
+      <label for="targetTime">Target Time (minutes from now):</label>
+      <input type="number" id="targetTime" placeholder="Enter Time in Minutes">
 
-    <div id="spinner">⏳ Collecting data...</div>
-    <div id="stats"></div>
-    <canvas id="viewChart" height="100"></canvas>
+      <button id="startButton">Start Tracking</button>
+    </div>
+
+    <div id="loadingSpinner" class="spinner hidden"></div>
+
+    <div id="stats" class="stats-section">
+      <h2>Live Stats</h2>
+      <p>Live View Count: <span id="viewCount">-</span></p>
+      <p>Last 5 min Views: <span id="last5MinViews">-</span></p>
+      <p>Last 10 min Views: <span id="last10MinViews">-</span></p>
+      <p>Last 15 min Views: <span id="last15MinViews">-</span></p>
+      <p>Last 20 min Views: <span id="last20MinViews">-</span></p>
+      <p>Last 25 min Views: <span id="last25MinViews">-</span></p>
+      <p>Last 30 min Views: <span id="last30MinViews">-</span></p>
+      <p>Avg Views/Min (Last 15 min): <span id="avgViewsPerMin">-</span></p>
+      <p>Views/min Required: <span id="requiredViewsPerMin">-</span></p>
+      <p>Views Required in next 5 min: <span id="requiredViewsNext5Min">-</span></p>
+      <p>Projected Views: <span id="projectedViews">-</span></p>
+      <p>Forecast: <span id="forecast">-</span></p>
+      <p>Time Left: <span id="timeLeft">-</span></p>
+      <p>Views Left to Meet Target: <span id="viewsLeft" class="view-diff">-</span></p>
+    </div>
+
+    <canvas id="viewChart" width="400" height="200"></canvas>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
